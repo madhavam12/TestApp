@@ -3,7 +3,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'LocalWidgets/inputField.dart';
 
 import 'LocalWidgets/avatar.dart';
-
+import 'LocalWidgets/loadingBar.dart';
 import 'package:connection_verify/connection_verify.dart';
 import 'package:sample_app/services/firebaseAuth.dart';
 import 'package:sample_app/providers/providers.dart' as providers;
@@ -28,7 +28,6 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
       backgroundColor: Color(0xFFDEE1ED),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -161,7 +160,7 @@ class SignUpPage extends StatelessWidget {
             return 0;
           }
 
-          openLoadingDialog(context, "Creating");
+          loadingBar(context, "Creating");
           if (!(await ConnectionVerify.connectionStatus())) {
             //when no connection
             Navigator.of(context, rootNavigator: true).pop();
@@ -220,24 +219,4 @@ class SignUpPage extends StatelessWidget {
       );
     });
   }
-}
-
-final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
-openLoadingDialog(BuildContext context, String text) async {
-  showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (context) => AlertDialog(
-      content: Row(
-        children: <Widget>[
-          CircularProgressIndicator(
-              strokeWidth: 1, valueColor: AlwaysStoppedAnimation(Colors.black)),
-          Expanded(
-            child: Text(text),
-          ),
-        ],
-      ),
-    ),
-  );
 }

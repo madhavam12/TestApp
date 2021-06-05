@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
-import 'editProfile.dart';
+import 'LocalWidgets/optionRow.dart';
+import 'LocalWidgets/editProfile.dart';
 import 'package:intl/intl.dart';
 import 'package:sample_app/Models/user.dart';
 import 'package:sample_app/Screens/WelcomeScreen/welcomeScreen.dart';
@@ -166,65 +166,6 @@ class _UserProfileViewState extends State<UserProfileView> {
                 ],
               );
             }),
-      ),
-    );
-  }
-}
-
-class OptionRow extends StatelessWidget {
-  final Function onTap;
-  final String text;
-  final IconData iconData;
-  final Color iconColor;
-  final Color iconColor2;
-  OptionRow(
-      {@required this.iconColor,
-      @required this.iconColor2,
-      @required this.onTap,
-      @required this.iconData,
-      @required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 35.0),
-      child: GestureDetector(
-        onTap: onTap,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            CircleAvatar(
-              backgroundColor: iconColor2,
-              radius: 25,
-              child: Icon(
-                iconData,
-                size: 30,
-                color: iconColor,
-              ),
-            ),
-            Text(
-              text,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                letterSpacing: 1.5,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontFamily: "QuickSand",
-                fontSize: 20.0,
-              ),
-            ),
-            CircleAvatar(
-              radius: 25,
-              backgroundColor: Color(0xFFF4F4F6),
-              child: Icon(
-                LineAwesomeIcons.arrow_right,
-                color: Color(0xFF3B3C48),
-                size: 30,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

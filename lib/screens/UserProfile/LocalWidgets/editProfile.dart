@@ -4,7 +4,7 @@ import 'inputField.dart';
 import 'package:sample_app/Models/user.dart';
 import 'avatar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'loadingBar.dart';
 import 'package:connection_verify/connection_verify.dart';
 import 'package:sample_app/services/firebaseAuth.dart';
 import 'package:sample_app/providers/providers.dart' as providers;
@@ -31,7 +31,7 @@ class EditProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
+   
       backgroundColor: Color(0xFFDEE1ED),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -116,7 +116,7 @@ class EditProfilePage extends StatelessWidget {
             return 0;
           }
 
-          openLoadingDialog(context, "Updating");
+         loadingBar(context, "Updating");
           if (!(await ConnectionVerify.connectionStatus())) {
             //when no connection
             Navigator.of(context, rootNavigator: true).pop();
@@ -188,22 +188,4 @@ class EditProfilePage extends StatelessWidget {
   }
 }
 
-final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-openLoadingDialog(BuildContext context, String text) async {
-  showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (context) => AlertDialog(
-      content: Row(
-        children: <Widget>[
-          CircularProgressIndicator(
-              strokeWidth: 1, valueColor: AlwaysStoppedAnimation(Colors.black)),
-          Expanded(
-            child: Text(text),
-          ),
-        ],
-      ),
-    ),
-  );
-}

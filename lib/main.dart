@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Screens/LoginScreen/loginScreen.dart';
 
-import 'Screens/WelcomeScreen/welcomeScreen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
