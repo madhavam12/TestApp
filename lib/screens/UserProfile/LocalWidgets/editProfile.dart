@@ -125,6 +125,7 @@ class EditProfilePage extends StatelessWidget {
                 value:
                     "No Internet connection. Please connect to the internet and then try again.",
                 color: Colors.red);
+             path.state = "";
             return 0;
           }
           FirestoreDatabaseService _db = FirestoreDatabaseService();
@@ -141,6 +142,7 @@ class EditProfilePage extends StatelessWidget {
           if (upload is String) {
             Navigator.of(context, rootNavigator: true).pop();
             showInSnackBar(context: context, value: upload, color: Colors.red);
+            path.state = "";
             return 0;
           }
           var result = await _db.updateUser(
@@ -154,11 +156,13 @@ class EditProfilePage extends StatelessWidget {
           if (result is String) {
             Navigator.of(context, rootNavigator: true).pop();
             showInSnackBar(context: context, value: result, color: Colors.red);
+             path.state = "";
             return 0;
           }
           Navigator.of(context, rootNavigator: true).pop();
           showInSnackBar(
               context: context, value: "Profile updated", color: Colors.orange);
+           path.state = "";
         },
         child: Container(
           width: MediaQuery.of(context).size.width,
