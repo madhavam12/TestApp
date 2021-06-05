@@ -1,5 +1,5 @@
 # Description
-Sample app for the test.
+Sample app for the test. Did not use locators for dependency injection to keep it simple since it's a smaller project.
 
 # Additional Features
 
